@@ -190,7 +190,7 @@ function displayData(data) {
   data.forEach((item) => {
     str += 
      `<div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated" >
-      <div class="staff">
+      <div class="animalInfo">
         <div class="img-wrap d-flex align-items-stretch">
           <div class="img align-self-stretch" style="background-image: url(${item.album_file});"></div>
         </div>

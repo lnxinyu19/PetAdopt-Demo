@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 21/01/2021 19:10
+    Creation date: 29/01/2021 23:33
     */
 
     @font-face {
@@ -37,22 +37,24 @@
   font-smoothing: antialiased;
     }
 
-    .flaticon-phone-call:before { content: "\f100"; }
-.flaticon-pet-house:before { content: "\f101"; }
-.flaticon-relax:before { content: "\f102"; }
-.flaticon-person:before { content: "\f103"; }
-.flaticon-dog:before { content: "\f104"; }
-.flaticon-house:before { content: "\f105"; }
-.flaticon-lonely:before { content: "\f106"; }
-.flaticon-pet-insurance:before { content: "\f107"; }
-.flaticon-maps-and-flags:before { content: "\f108"; }
+    .flaticon-compass:before { content: "\f100"; }
+.flaticon-phone-call:before { content: "\f101"; }
+.flaticon-pet-house:before { content: "\f102"; }
+.flaticon-relax:before { content: "\f103"; }
+.flaticon-person:before { content: "\f104"; }
+.flaticon-dog:before { content: "\f105"; }
+.flaticon-house:before { content: "\f106"; }
+.flaticon-lonely:before { content: "\f107"; }
+.flaticon-pet-insurance:before { content: "\f108"; }
+.flaticon-maps-and-flags:before { content: "\f109"; }
     
-    $font-Flaticon-phone-call: "\f100";
-    $font-Flaticon-pet-house: "\f101";
-    $font-Flaticon-relax: "\f102";
-    $font-Flaticon-person: "\f103";
-    $font-Flaticon-dog: "\f104";
-    $font-Flaticon-house: "\f105";
-    $font-Flaticon-lonely: "\f106";
-    $font-Flaticon-pet-insurance: "\f107";
-    $font-Flaticon-maps-and-flags: "\f108";
+    $font-Flaticon-compass: "\f100";
+    $font-Flaticon-phone-call: "\f101";
+    $font-Flaticon-pet-house: "\f102";
+    $font-Flaticon-relax: "\f103";
+    $font-Flaticon-person: "\f104";
+    $font-Flaticon-dog: "\f105";
+    $font-Flaticon-house: "\f106";
+    $font-Flaticon-lonely: "\f107";
+    $font-Flaticon-pet-insurance: "\f108";
+    $font-Flaticon-maps-and-flags: "\f109";

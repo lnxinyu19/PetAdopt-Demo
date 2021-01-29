@@ -8652,7 +8652,7 @@ h1, h2, h3, h4, h5,
   .work:hover .text {
     opacity: 1; }
 
-.staff {
+.animalInfo {
   overflow: hidden;
   border-radius: 4px;
   margin-bottom: 30px;
@@ -8664,9 +8664,9 @@ h1, h2, h3, h4, h5,
   -webkit-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   transition: all 0.3s ease; }
-  .staff .img-wrap {
+  .animalInfo .img-wrap {
     height: 300px; }
-  .staff .img {
+  .animalInfo .img {
     width: 100%;
     display: block;
     background-position: top center;
@@ -8675,7 +8675,7 @@ h1, h2, h3, h4, h5,
     -webkit-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease; }
-  .staff .text {
+  .animalInfo .text {
     position: relative;
     background: #fff;
     -moz-transition: all 0.3s ease;
@@ -8683,7 +8683,7 @@ h1, h2, h3, h4, h5,
     -webkit-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease; }
-    .staff .text h3 {
+    .animalInfo .text h3 {
       font-size: 18px;
       font-weight: 700;
       margin-bottom: 0;
@@ -8694,16 +8694,16 @@ h1, h2, h3, h4, h5,
       transition: all 0.3s ease;
       color: #000000;
       margin-bottom: 5px; }
-    .staff .text .position {
+    .animalInfo .text .position {
       color: #00bd56;
       display: block;
       font-weight: 600;
       display: inline-block;
       margin-bottom: 10px;
       font-size: 16px; }
-    .staff .text .faded {
+    .animalInfo .text .faded {
       opacity: 1; }
-  .staff .ftco-social {
+  .animalInfo .ftco-social {
     position: absolute;
     top: -50px;
     left: 0;
@@ -8716,11 +8716,11 @@ h1, h2, h3, h4, h5,
     -webkit-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease; }
-    .staff .ftco-social li {
+    .animalInfo .ftco-social li {
       width: 30px;
       height: 30px;
       position: relative; }
-      .staff .ftco-social li a {
+      .animalInfo .ftco-social li a {
         color: #fff;
         width: 30px;
         height: 30px;
@@ -8737,21 +8737,21 @@ h1, h2, h3, h4, h5,
         -moz-border-radius: 50%;
         -ms-border-radius: 50%;
         border-radius: 50%; }
-  .staff:hover, .staff:focus {
+  .animalInfo:hover, .animalInfo:focus {
     -webkit-box-shadow: 0px 24px 48px -13px rgba(0, 0, 0, 0.11);
     -moz-box-shadow: 0px 24px 48px -13px rgba(0, 0, 0, 0.11);
     box-shadow: 0px 24px 48px -13px rgba(0, 0, 0, 0.11); }
-    .staff:hover .ftco-social, .staff:focus .ftco-social {
+    .animalInfo:hover .ftco-social, .animalInfo:focus .ftco-social {
       opacity: 1;
       top: -60px; }
-    .staff:hover .img, .staff:focus .img {
+    .animalInfo:hover .img, .animalInfo:focus .img {
       margin-top: -10px; }
-    .staff:hover .text, .staff:focus .text {
+    .animalInfo:hover .text, .animalInfo:focus .text {
       background: #00bd56;
       color: rgba(255, 255, 255, 0.8); }
-      .staff:hover .text h3, .staff:focus .text h3 {
+      .animalInfo:hover .text h3, .animalInfo:focus .text h3 {
         color: #fff; }
-      .staff:hover .text .position, .staff:focus .text .position {
+      .animalInfo:hover .text .position, .animalInfo:focus .text .position {
         color: rgba(255, 255, 255, 0.4); }
 
 .ftco-social {
