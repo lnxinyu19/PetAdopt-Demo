@@ -7,10 +7,16 @@ let pageData = []; //存放點選需顯示的分頁資料
 // 綁定DOM
 const cityOption = document.getElementById("selectCity");
 const areaOption = document.getElementById("selectArea");
+const pageId = document.getElementById("pageid");
+
+let cardInfo = document.getElementById("animalCard");
+let areaInfo = document.getElementById("areaInfo");
 
 // 監聽事件
 cityOption.addEventListener("change", creatAreaOption, false);
 areaOption.addEventListener("change", showData, false);
+pageid.addEventListener("click", switchPage);
+
 
 // AJAX
 $.ajax({
@@ -21,7 +27,6 @@ $.ajax({
   success: function (response) {
     jsonData = response;
     creatCityOption();
-
   },
 });
 
@@ -46,6 +51,7 @@ function creatCityOption() {
     cityStr += `<option value="${citySelect[i]}">${citySelect[i]}</option>`;
     cityOption.innerHTML = cityStr;
   }
+
 }
 
 function creatAreaOption() {
@@ -91,9 +97,8 @@ function creatAreaOption() {
 }
 
 function showData() {
+  pageData = []
   let selected = areaOption.value;
-  let cardInfo = document.getElementById("animalCard");
-  let areaInfo = document.getElementById("areaInfo");
   cardInfo.innerHTML = ""; //每次區域變化將資料清空
   areaInfo.innerHTML = "";
   for (let i = 0; i < jsonData.length; i++) {
@@ -103,51 +108,31 @@ function showData() {
       jsonData[i].animal_sex = "女生";
     }
     if (selected === jsonData[i].animal_place) {
-      pageData.push(jsonData[i])
-      // cardInfo.innerHTML += `
-      //   <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated" >
-      //   <div class="staff">
-      //     <div class="img-wrap d-flex align-items-stretch">
-      //       <div class="img align-self-stretch" style="background-image: url(${jsonData[i].album_file});"></div>
-      //     </div>
-      //     <div class="text pt-3 px-3 pb-4 text-center">
-      //       <h3>我的號碼是：${jsonData[i].animal_id}</h3>
-      //       <span class="position mb-2">種類：${jsonData[i].animal_kind}${jsonData[i].animal_kind}</span>
-      //       <div class="faded">
-      //         <p>我是${jsonData[i].animal_sex}</p>
-      //         <p>顏色：${jsonData[i].animal_colour}</p>
-      //         <span>建檔時間：${jsonData[i].animal_createtime}</span>
-      //       </div>
-      //     </div>
-      //   </div>
-      // </div>`;
-      // areaInfo.innerHTML = `<h4>聯絡資訊</h4>
-      // <span class="flaticon-phone-call mr-2"></span><a href="tel:${jsonData[i].shelter_tel}">${jsonData[i].shelter_tel}</a>
-      // <br>
-      // <span class="flaticon-maps-and-flags mr-2"></span><a target="_blank" href="http://www.google.com/search?q=${jsonData[i].shelter_address}">${jsonData[i].shelter_address}</a>`;
+      pageData.push(jsonData[i]);
     }
     // 如果未提供照片，則出現未有照片
     if (jsonData[i].album_file === "") {
       jsonData[i].album_file = "/images/no_image.jpg";
     }
   }
-  pagination(pageData,1)
+  pagination(pageData, 1);
+  console.log(pageData)
 }
 
 function pagination(pageData, nowPage) {
-  const dataTotal = pageData.length
-  // 取得全部資料長度  
+  const dataTotal = pageData.length;
+  // 取得全部資料長度
   // 設定要顯示在畫面上的資料數量
-  // 預設每一頁只顯示 12 筆資料。
-  const perpage = 12;
-  
+  // 預設每一頁只顯示 20 筆資料。
+  const perpage = 20;
+
   // page 按鈕總數量公式 總資料數量 / 每一頁要顯示的資料
   // 這邊要注意，因為有可能會出現餘數，所以要無條件進位。
   const pageTotal = Math.ceil(dataTotal / perpage);
-  
+
   // 當前頁數，對應現在當前頁數
   let currentPage = nowPage;
-  
+
   // 因為要避免當前頁數筆總頁數還要多，假設今天總頁數是 3 筆，就不可能是 4 或 5
   // 所以要在寫入一個判斷避免這種狀況。
   // 當"當前頁數"比"總頁數"大的時候，"當前頁數"就等於"總頁數"
@@ -155,11 +140,11 @@ function pagination(pageData, nowPage) {
   if (currentPage > pageTotal) {
     currentPage = pageTotal;
   }
-  
+
   // 由前面可知 最小數字為 6 ，所以用答案來回推公式。
-  const minData = (currentPage * perpage) - perpage + 1 ;
-  const maxData = (currentPage * perpage) ;
-  
+  const minData = currentPage * perpage - perpage + 1;
+  const maxData = currentPage * perpage;
+
   // 先建立新陣列
   const data = [];
   // 這邊將會使用 ES6 forEach 做資料處理
@@ -169,27 +154,25 @@ function pagination(pageData, nowPage) {
     const num = index + 1;
     // 這邊判斷式會稍微複雜一點
     // 當 num 比 minData 大且又小於 maxData 就push進去新陣列。
-    if ( num >= minData && num <= maxData) {
+    if (num >= minData && num <= maxData) {
       data.push(item);
     }
-  })
+  });
   // 用物件方式來傳遞資料
   const page = {
     pageTotal,
     currentPage,
     hasPage: currentPage > 1,
     hasNext: currentPage < pageTotal,
-  }
-  displayData(data)
+  };
+  displayData(data);
   pageBtn(page);
 }
 
 function displayData(data) {
-  let cardInfo = document.getElementById("animalCard");
-  let str = ''
+  let str = "";
   data.forEach((item) => {
-    str += 
-     `<div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated" >
+    str += `<div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated" >
       <div class="animalInfo">
         <div class="img-wrap d-flex align-items-stretch">
           <div class="img align-self-stretch" style="background-image: url(${item.album_file});"></div>
@@ -205,50 +188,48 @@ function displayData(data) {
         </div>
       </div>
     </div>`;
-    cardInfo.innerHTML = str
     areaInfo.innerHTML = `<h4>聯絡資訊</h4>
     <span class="flaticon-phone-call mr-2"></span><a href="tel:${item.shelter_tel}">${item.shelter_tel}</a>
     <br>
     <span class="flaticon-maps-and-flags mr-2"></span><a target="_blank" href="http://www.google.com/search?q=${item.shelter_address}">${item.shelter_address}</a>`;
   });
-  // cardInfo.innerHTML = str;
+  cardInfo.innerHTML = str;
 }
 
-const pageId = document.getElementById('pageid');
-
-function pageBtn (page){
-  let str = '';
+function pageBtn(page) {
+  let str = "";
   const total = page.pageTotal;
-  
-  if(page.hasPage) {
-    str += `<li class="page-item"><a class="page-link" href="#" data-page="${Number(page.currentPage) - 1}">&lt;</a></li>`;
+
+  if (page.hasPage) {
+    str += `<li class="page-item"><a class="page-link" href="#" data-page="${
+      Number(page.currentPage) - 1
+    }">&lt;</a></li>`;
   } else {
     str += `<li class="page-item disabled"><span class="page-link">&lt;</span></li>`;
   }
-  
 
-  for(let i = 1; i <= total; i++){
-    if(Number(page.currentPage) === i) {
-      str +=`<li class="page-item active"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
+  for (let i = 1; i <= total; i++) {
+    if (Number(page.currentPage) === i) {
+      str += `<li class="page-item active"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
     } else {
-      str +=`<li class="page-item"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
+      str += `<li class="page-item"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
     }
-  };
+  }
 
-  if(page.hasNext) {
-    str += `<li class="page-item"><a class="page-link" href="#" data-page="${Number(page.currentPage) + 1}">&gt;</a></li>`;
+  if (page.hasNext) {
+    str += `<li class="page-item"><a class="page-link" href="#" data-page="${
+      Number(page.currentPage) + 1
+    }">&gt;</a></li>`;
   } else {
     str += `<li class="page-item disabled"><span class="page-link">&gt;</span></li>`;
   }
-
   pageid.innerHTML = str;
 }
 
-function switchPage(e){
+function switchPage(e) {
   e.preventDefault();
-  if(e.target.nodeName !== 'A') return;
+  if (e.target.nodeName !== "A") return;
   const page = e.target.dataset.page;
   pagination(pageData, page);
 }
 
-pageid.addEventListener('click', switchPage);
