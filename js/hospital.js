@@ -1,12 +1,14 @@
 let hospitalData = [];
+let pageData = [];
 
 //DOM
 const selectZone = document.getElementById("selectZone");
-const zoneID = document.getElementById("zoneID");
 const hospitalCard = document.getElementById("hospitalCard");
+// const pageId = document.getElementById("pageid");
 
 //監聽
 selectZone.addEventListener("change", hospitalInfo, false);
+// pageid.addEventListener("click", switchPage);
 
 $.ajax({
   type: "get",
@@ -30,23 +32,23 @@ function zoneOption() {
     selectZone.innerHTML += `<option value="${noRepeatZone[i]}">${noRepeatZone[i]}</option>`;
   }
 }
-
 function hospitalInfo() {
+  let pageData = [];
   let selected = selectZone.value;
-  hospitalCard.innerHTML = ''
+  hospitalCard.innerHTML = "";
   for (let i = 0; i < hospitalData.length; i++) {
     if (selected == hospitalData[i].縣市) {
-      zoneID.innerHTML = selected;
       hospitalCard.innerHTML += `
-      <div class="row col-lg-4 py-3">
+      <div class="row col-sm-12 col-md-6 col-lg-4 py-3">
       <div class="card ftco-animate fadeInUp ftco-animated">
       <div class="card-body">
-        <h3 class="card-title text-center">${hospitalData[i].機構名稱}</h5>
-        <p class="card-text"><span class="flaticon-phone-call mr-2"></span>${hospitalData[i].機構電話}</p>
-        <p class="card-text"><span class="flaticon-maps-and-flags mr-2"></span>${hospitalData[i].機構地址}</p>
+        <h3 class="card-title">${hospitalData[i].機構名稱}</h5><hr/>
+        <span class="flaticon-phone-call text-left mr-2"></span><p class="card-text"><a href="tel:${hospitalData[i].機構電話}">${hospitalData[i].機構電話}</p></a>
+        <span class="flaticon-maps-and-flags text-left mr-2"></span><p class="card-text"><a target="_blank" href="http://www.google.com/search?q=${hospitalData[i].機構地址}">${hospitalData[i].機構地址}</p></a>
       </div>
     </div>
     </div>`;
+      pageData.push(hospitalData[i]);
     }
   }
 }
