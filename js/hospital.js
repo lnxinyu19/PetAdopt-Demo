@@ -33,7 +33,6 @@ function zoneOption() {
   }
 }
 function hospitalInfo() {
-  let pageData = [];
   let selected = selectZone.value;
   hospitalCard.innerHTML = "";
   for (let i = 0; i < hospitalData.length; i++) {
@@ -48,7 +47,6 @@ function hospitalInfo() {
       </div>
     </div>
     </div>`;
-      pageData.push(hospitalData[i]);
     }
   }
 }
