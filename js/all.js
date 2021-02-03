@@ -14,7 +14,7 @@ let areaInfo = document.getElementById("areaInfo");
 
 // 監聽事件
 cityOption.addEventListener("change", creatAreaOption, false);
-areaOption.addEventListener("change", showData, false);
+areaOption.addEventListener("change", compliedData, false);
 pageid.addEventListener("click", switchPage);
 
 
@@ -96,11 +96,9 @@ function creatAreaOption() {
   areaOption.innerHTML = areaStr;
 }
 
-function showData() {
-  pageData = []
+function compliedData() {
+  // let pageData = []
   let selected = areaOption.value;
-  cardInfo.innerHTML = ""; //每次區域變化將資料清空
-  areaInfo.innerHTML = "";
   for (let i = 0; i < jsonData.length; i++) {
     if (jsonData[i].animal_sex === "M") {
       jsonData[i].animal_sex = "男生";
@@ -116,7 +114,6 @@ function showData() {
     }
   }
   pagination(pageData, 1);
-  console.log(pageData)
 }
 
 function pagination(pageData, nowPage) {
@@ -141,7 +138,6 @@ function pagination(pageData, nowPage) {
     currentPage = pageTotal;
   }
 
-  // 由前面可知 最小數字為 6 ，所以用答案來回推公式。
   const minData = currentPage * perpage - perpage + 1;
   const maxData = currentPage * perpage;
 
@@ -170,6 +166,8 @@ function pagination(pageData, nowPage) {
 }
 
 function displayData(data) {
+  cardInfo.innerHTML = ""; //每次區域變化將資料清空
+  areaInfo.innerHTML = "";
   let str = "";
   data.forEach((item) => {
     str += `<div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated" >
@@ -201,7 +199,7 @@ function pageBtn(page) {
   const total = page.pageTotal;
 
   if (page.hasPage) {
-    str += `<li class="page-item"><a class="page-link" href="#" data-page="${
+    str += `<li class="page-item"><a class="page-link" href="javascript:void(0)" data-page="${
       Number(page.currentPage) - 1
     }">&lt;</a></li>`;
   } else {
@@ -210,14 +208,14 @@ function pageBtn(page) {
 
   for (let i = 1; i <= total; i++) {
     if (Number(page.currentPage) === i) {
-      str += `<li class="page-item active"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
+      str += `<li class="page-item active disable"><a class="page-link" href="javascript:void(0)" data-page="${i}">${i}</a></li>`;
     } else {
-      str += `<li class="page-item"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
+      str += `<li class="page-item"><a class="page-link" href="javascript:void(0)" data-page="${i}">${i}</a></li>`;
     }
   }
 
   if (page.hasNext) {
-    str += `<li class="page-item"><a class="page-link" href="#" data-page="${
+    str += `<li class="page-item"><a class="page-link" href="javascript:void(0)" data-page="${
       Number(page.currentPage) + 1
     }">&gt;</a></li>`;
   } else {
