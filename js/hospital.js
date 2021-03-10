@@ -70,7 +70,6 @@ function pagination(pageData, nowPage) {
     hasPage: currentPage > 1,
     hasNext: currentPage < pageTotal,
   };
-  console.log(data)
   displayData(data);
   pageBtn(page);
 }
