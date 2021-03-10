@@ -25,12 +25,12 @@
     [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
     [class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
       font-family: Flaticon;
-      font-size: 42px;
+      font-size: 40px;
       font-style: normal;
       text-align: center;
     }
 
-    .flaticon-phone-call:before { content: "\f101";}
+    .flaticon-phone-call:before { content: "\f101"; font-size: 20px;}
     .flaticon-pet-house:before { content: "\f102"; font-size: 38px;}
     .flaticon-relax:before { content: "\f103"; }
     .flaticon-person:before { content: "\f104"; }
@@ -38,4 +38,4 @@
     .flaticon-house:before { content: "\f106"; }
     .flaticon-lonely:before { content: "\f107"; }
     .flaticon-pet-insurance:before { content: "\f108"; }
-    .flaticon-maps-and-flags:before { content: "\f109"; }
+    .flaticon-maps-and-flags:before { content: "\f109"; font-size: 20px;}
