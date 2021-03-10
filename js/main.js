@@ -84,8 +84,8 @@
   $('#goTop-btn').click(function(e) {
     e.preventDefault();
     $('html,body').animate({
-        scrollTop: 500
-      }, 800);        
+        scrollTop: 0
+      }, 600);        
   });
 })(jQuery);
 
